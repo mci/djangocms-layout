@@ -91,8 +91,8 @@ class Section(CMSPlugin):
         choices=CONTAINER_CHOICES,
         blank=True,
         default='container',
-        help_text=_('Adds a ".container" or ".container-fluid" element inside the section.'
-            'Use it to have a full-page-width styled <section> with an inner container with'
+        help_text=_('Adds a ".container" or ".container-fluid" element inside the section. '
+            'Use it to have a full-page-width styled <section> with an inner container with '
             'a constrained width. All child plugins render inside the container.'),
     )
 
