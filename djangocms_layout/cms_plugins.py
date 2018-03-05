@@ -26,14 +26,17 @@ from django.contrib.admin.options import get_ul_class
 
 class SectionPlugin(CMSPluginBase):
 	model = Section
+	name = _("Page Section")
+	module = 'Advanced Layout'
+
+	model = Section
 	radio_fields = { 'container': admin.VERTICAL }
 	# form = SectionForm
-	name = _("Website Section")
-	module = 'Advanced Layout'
 	render_template = "djangocms_layout/section.html"
 	allow_children = True
 	text_enabled = False
 	#raw_id_fields = ('group',)
 	admin_preview = False
 
+SectionPlugin.__name__ = 'LayoutSectionPlugin'
 plugin_pool.register_plugin(SectionPlugin)
