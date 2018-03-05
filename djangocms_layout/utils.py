@@ -10,20 +10,6 @@ before registering plugin.
 Change this back to 'SectionPlugin' once plugins have been migrated.
 '''
 
-def get_fresh_instance(model, instance_pk, retries=3):
-    try:
-        fresh = model.objects.get(pk=instance_pk)
-        return fresh
-    except:
-        print('Error getting fresh copy of plugin', instance_pk)
-        if retries > 0:
-            print('...sleeping for 0.5 seconds before retrying')
-            time.sleep(0.5)
-            return get_fresh_instance(model=model, instance_pk=instance_pk, retries=retries-1)
-        else:
-            print('...giving up')
-            raise
-
 def migrateSection(old_plugin):
     old_plugin = old_plugin.get_bound_plugin()
     children = old_plugin.get_children()
@@ -61,18 +47,18 @@ def migrateSection(old_plugin):
     #    child.move(target=new_plugin, pos='last-child')
     
     try:
-        new_plugin = get_fresh_instance(model=LSection, instance_pk=new_plugin.pk, retries=3)
+        new_plugin = LSection.objects.get(pk=new_plugin.pk)
     except:
         print("Couldn't get fresh copy of new_plugin")
     try:
-        old_plugin = get_fresh_instance(model=Section, instance_pk=old_plugin.pk, retries=3)
+        old_plugin = Section.objects.get(pk=old_plugin.pk)
     except:
         print("Couldn't get fresh copy of old_plugin")
     
     copy_plugins_to_placeholder(plugins=old_plugin.get_descendants(), placeholder=old_plugin.placeholder, root_plugin=new_plugin)
     
     new_plugin.copy_relations(old_plugin)
-    new_plugin.post_copy(old_plugin, [(new_plugin, old_plugin),])
+    # new_plugin.post_copy(old_plugin, [(new_plugin, old_plugin),])
     
     # in case this is a child of a TextPlugin that needs
     # its content updated with the newly copied plugin
