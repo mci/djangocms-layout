@@ -5,7 +5,7 @@
 
         style="
             {% if instance.min_height %}min-height: {{ instance.min_height }};{% endif %}
-            background: {% if instance.bg_color %}{{instance.bg_color}}{% endif %} {% if instance.bg_image.url %}url('{{instance.bg_image.url}}'){% endif %} {{instance.bg_position}}/{{ instance.bg_size }} {{instance.bg_repeat}} {{instance.bg_attachment}};
+            background: {% if instance.bg_color %}{{instance.bg_color}}{% endif %} {% if instance.bg_image_url %}url('{{instance.bg_image_url}}'){% endif %} {{instance.bg_position}}/{{ instance.bg_size }} {{instance.bg_repeat}} {{instance.bg_attachment}};
             {% if instance.bg_size == 'cover' %}
                 -webkit-background-size: cover; -moz-background-size: cover; -o-background-size: cover; background-size: cover;
             {% endif %}
