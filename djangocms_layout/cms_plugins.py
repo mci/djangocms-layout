@@ -28,7 +28,7 @@ class SectionPlugin(CMSPluginBase):
 	model = Section
 	radio_fields = { 'container': admin.VERTICAL }
 	# form = SectionForm
-	name = _("Website Section")
+	name = _("Page Section")
 	module = 'Advanced Layout'
 	render_template = "djangocms_layout/section.html"
 	allow_children = True
