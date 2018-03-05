@@ -2,12 +2,27 @@ from cms.models import CMSPlugin
 from bootstrap_layout.models import Section
 from djangocms_layout.models import Section as LSection
 from cms.utils.plugins import copy_plugins_to_placeholder
+import time
 
 '''
 First edit djangocms_layout.cms_plugins and set SectionPlugin.__name__ = 'LayoutSectionPlugin'
 before registering plugin.
 Change this back to 'SectionPlugin' once plugins have been migrated.
 '''
+
+def get_fresh_instance(model, instance_pk, retries=5):
+    try:
+        fresh = model.objects.get(pk=instance_pk)
+        return fresh
+    except:
+        print('Error getting fresh copy of plugin', instance_pk)
+        if retries > 0:
+            print('...sleeping for 3 seconds before retrying')
+            time.sleep(3)
+            return get_fresh_instance(model=model, instance_pk=instance_pk, retries=retries-1)
+        else:
+            print('...giving up')
+            raise
 
 def migrateSection(old_plugin):
     old_plugin = old_plugin.get_bound_plugin()
@@ -41,16 +56,19 @@ def migrateSection(old_plugin):
     # insert new plugin into tree at original position, shifting original to right
     new_plugin = old_plugin.add_sibling(pos='left', instance=new_plugin)
 
+    print('Inserted new plugin adjacent to original, sleeping 0.5 seconds to ensure tree is updated on DB.')
+    time.sleep(0.5)
+
     # This does not seem to stick for some reason
     #for child in children:
     #    child.move(target=new_plugin, pos='last-child')
     
     try:
-        new_plugin = LSection.objects.get(pk=new_plugin.pk)
+        new_plugin = get_fresh_instance(model=LSection, instance_pk=new_plugin.pk, retries=5)
     except:
         print("Couldn't get fresh copy of new_plugin")
     try:
-        old_plugin = Section.objects.get(pk=old_plugin.pk)
+        new_plugin = get_fresh_instance(model=Section, instance_pk=old_plugin.pk, retries=5)
     except:
         print("Couldn't get fresh copy of old_plugin")
     
