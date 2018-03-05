@@ -65,14 +65,14 @@ def migrateSection(old_plugin):
     except:
         print("Couldn't get fresh copy of new_plugin")
     try:
-        new_plugin = get_fresh_instance(model=Section, instance_pk=old_plugin.pk, retries=3)
+        old_plugin = get_fresh_instance(model=Section, instance_pk=old_plugin.pk, retries=3)
     except:
         print("Couldn't get fresh copy of old_plugin")
     
     copy_plugins_to_placeholder(plugins=old_plugin.get_descendants(), placeholder=old_plugin.placeholder, root_plugin=new_plugin)
     
     new_plugin.copy_relations(old_plugin)
-    # new_plugin.post_copy(old_plugin, [(new_plugin, old_plugin),])
+    new_plugin.post_copy(old_plugin, [(new_plugin, old_plugin),])
     
     # in case this is a child of a TextPlugin that needs
     # its content updated with the newly copied plugin
