@@ -1,11 +1,11 @@
 ================
-Django CMS Layout
+Django CMS LayoutTools
 ================
 
 
 |pypi| |build| |coverage|
 
-**Django CMS Layout** is a set of plugins for `django CMS <http://django-cms.org>`_
+**Django CMS LayoutTools** is a set of plugins for `django CMS <http://django-cms.org>`_
 that allows you to design content sections on cms webpages that have specified 
 container properties (e.g., container-fluid) and css styling such as backgrounds.
 It uses Bootstrap3 container classes by default, but doesn't necessarily require
@@ -20,13 +20,13 @@ Contributing
 
 This is a an open-source project. We'll be delighted to receive your
 feedback in the form of issues and pull requests. See the github repo 
-`contribution guidelines https://github.com/mci/djangocms-layout>`_.
+`contribution guidelines https://github.com/mci/djangocms-layouttools>`_.
 
 
 Documentation
 =============
 
-See ``REQUIREMENTS`` in the `setup.py <https://github.com/mci/djangocms-layout/blob/master/setup.py>`_
+See ``REQUIREMENTS`` in the `setup.py <https://github.com/mci/djangocms-layouttools/blob/master/setup.py>`_
 file for additional dependencies:
 
 * Python 2.7, 3.3 or higher
@@ -42,9 +42,9 @@ Installation
 
 For a manual install:
 
-* run ``pip install djangocms-layout``
-* add ``djangocms_layout`` to your ``INSTALLED_APPS``
-* run ``python manage.py migrate djangocms_layout``
+* run ``pip install djangocms-layouttools``
+* add ``djangocms_layouttools`` to your ``INSTALLED_APPS``
+* run ``python manage.py migrate djangocms_layouttools``
 
 
 Configuration
@@ -64,7 +64,7 @@ You can run tests by executing::
     python setup.py test
 
 
-.. |pypi| image:: https://badge.fury.io/py/djangocms-layout.svg
-    :target: http://badge.fury.io/py/djangocms-layout
-.. |build| image:: https://travis-ci.org/mci/djangocms-layout.svg?branch=master
-    :target: https://travis-ci.org/mci/djangocms-layout
+.. |pypi| image:: https://badge.fury.io/py/djangocms-layouttools.svg
+    :target: http://badge.fury.io/py/djangocms-layouttools
+.. |build| image:: https://travis-ci.org/mci/djangocms-layouttools.svg?branch=master
+    :target: https://travis-ci.org/mci/djangocms-layouttools

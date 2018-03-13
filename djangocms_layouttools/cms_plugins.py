@@ -30,7 +30,7 @@ class SectionPlugin(CMSPluginBase):
 	# form = SectionForm
 	name = _("Page Section")
 	module = 'Advanced Layout'
-	render_template = "djangocms_layout/section.html"
+	render_template = "djangocms_layouttools/section.html"
 	allow_children = True
 	text_enabled = False
 	#raw_id_fields = ('group',)

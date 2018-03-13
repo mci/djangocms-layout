@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 from setuptools import find_packages, setup
 
-from djangocms_layout import __version__
+from djangocms_layouttools import __version__
 
 
 REQUIREMENTS = [
@@ -34,12 +34,12 @@ CLASSIFIERS = [
 
 
 setup(
-    name='djangocms-layout',
+    name='djangocms-layouttools',
     version=__version__,
     description=('Adds layout Section and other plugins to django CMS.'),
     author='Russell Moffitt, Marine Conservation Institute',
     author_email='Russell.Moffitt@marine-conservation.org',
-    url='https://github.com/mci/djangocms-layout',
+    url='https://github.com/mci/djangocms-layouttools',
     license='MIT',
     long_description=open('README.rst').read(),
     packages=find_packages(),

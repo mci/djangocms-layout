@@ -1,5 +1,5 @@
 include LICENSE.txt
 include README.rst
-recursive-include djangocms_layout/locale *
-recursive-include djangocms_layout/templates *
+recursive-include djangocms_layouttools/locale *
+recursive-include djangocms_layouttools/templates *
 recursive-exclude * *.pyc
