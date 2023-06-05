@@ -1,7 +1,8 @@
 from __future__ import unicode_literals, absolute_import
 
 from django.db import models
-from django.utils.translation import ugettext, ugettext_lazy as _
+from django.utils.translation import gettext as _
+from django.utils.translation import ugettext_lazy
 
 from filer.fields.image import FilerImageField
 from cms.models.pluginmodel import CMSPlugin
@@ -116,6 +117,6 @@ class Section(CMSPlugin):
         # you shall only set one image kind
         if self.bg_image and self.bg_external_image:
             raise ValidationError(
-                ugettext('You need to add either an image or a URL '
+                _('You need to add either an image or a URL '
                          'linking to an external image, not both.')
             )

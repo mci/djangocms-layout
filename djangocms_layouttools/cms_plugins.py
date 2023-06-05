@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals, absolute_import
 
-from django.utils.translation import ugettext_lazy as _
+from django.utils.translation import gettext_lazy as _
 
 from cms.plugin_pool import plugin_pool
 from cms.plugin_base import CMSPluginBase
